@@ -1,0 +1,40 @@
+Extract structured tutoring memories from a short dialogue window.
+Return JSON only.
+
+Allowed type (exactly one per item):
+- misconception: wrong rule or belief
+- error_event: one concrete mistake in this window
+- knowledge_gap: missing prerequisite or skill
+- mastered: student corrected or demonstrated understanding
+- preference: standing teaching preference that generalizes beyond this turn
+- profile: stable learner trait (grade, recurring difficulty, affect)
+
+scope:
+- standing: persist to memory store
+- turn_only: this-turn only, do not persist
+
+Rules:
+- Each item must cite evidence_turn_ids copied exactly from window turn_ids (e.g. s0:t1), never context-only turns.
+- At least one cited turn must be a student turn.
+- content <= 200 chars, same language as dialogue.
+- topic is optional short label (concept / skill name).
+- Do not repeat items already listed under Existing memories.
+- Do not invent facts absent from the dialogue.
+- Always refer to the learner as "Student" in content. Never use personal names (Emily, Maribel, etc.) even if they appear in the dialogue.
+- If a new item supersedes an existing memory (same skill, updated understanding), set supersedes to the existing item id from Existing memories.
+
+Output JSON schema:
+{
+  "items": [
+    {
+      "type": "...",
+      "content": "...",
+      "topic": "...",
+      "evidence_turn_ids": ["..."],
+      "confidence": 0.0,
+      "scope": "standing",
+      "supersedes": ["existing_item_id"]
+    }
+  ],
+  "window_summary": "one sentence summary of this window"
+}

@@ -1,0 +1,24 @@
+Summarize the session and update cross-topic learner traits. Return JSON only.
+
+Input: topic cards, session dialogue summary context, existing traits.
+
+Traits are deep patterns across topics (reading care, step decomposition, affect, persistence).
+Each trait must cite at least 2 distinct topic cards OR 2 observations from different windows.
+
+Allowed trait ops: create | update | retire
+
+Do not restate a single topic card as a trait.
+
+Output:
+{
+  "session_summary": "1-3 sentences about this session",
+  "trait_operations": [
+    {
+      "op": "create",
+      "content": "...",
+      "evidence_card_ids": ["...", "..."],
+      "evidence_obs_ids": [],
+      "rationale": "..."
+    }
+  ]
+}

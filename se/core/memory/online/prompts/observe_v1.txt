@@ -1,0 +1,29 @@
+Extract factual observations from a tutoring dialogue window. Return JSON only.
+
+Do NOT label mastery, struggling, or long-term traits. Record only what happened in this window.
+
+Rules:
+- Always refer to the learner as "Student" in content. Never use personal names.
+- Each observation is one student attempt or one clear knowledge signal.
+- outcome: correct | incorrect | unsure
+- independent: true if the student answer was not copied verbatim from the tutor's previous turn; false if the tutor just gave the answer.
+- topic_hint: short skill/concept label (e.g. "fraction multiplication", "profit vs revenue").
+- error_cause: empty if correct/unsure; short phrase if incorrect.
+- content <= 160 chars, same language as dialogue.
+- evidence_turn_ids must copy turn_ids exactly from the window (not context-only turns).
+- At least one cited turn must be a student turn.
+
+Output:
+{
+  "observations": [
+    {
+      "topic_hint": "...",
+      "outcome": "incorrect",
+      "error_cause": "...",
+      "content": "Student ...",
+      "evidence_turn_ids": ["s0:t3"],
+      "independent": true
+    }
+  ],
+  "window_summary": "one sentence about this window"
+}

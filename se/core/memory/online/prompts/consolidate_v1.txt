@@ -1,0 +1,44 @@
+Consolidate new observations into topic state cards. Return JSON only.
+
+You receive:
+- Existing topic cards (with ids)
+- New observations (with obs ids) from the latest window
+
+Allowed operations (list in order):
+- create: new topic card for a topic_key not yet covered
+- update: change summary, status, active_misconceptions, note on an existing card
+- merge: two cards are the same topic; keep target_card_id, retire source_card_id
+- resolve_misconception: move a misconception text from active to resolved on a card
+
+status values: struggling | learning | mastered
+- struggling: active misconceptions or repeated errors without stable correction
+- learning: partial progress or mixed correct/incorrect
+- mastered: student demonstrated stable understanding AFTER prior errors were addressed
+
+Conflict rule: if the same topic has both correct and incorrect observations in one window, use the LAST student observation by turn order for status; put the other fact in note, do not create duplicate cards.
+
+For mastered: cite obs ids that are correct AND independent AND after the last incorrect obs on that topic.
+
+For resolve_misconception: cite the correct obs that shows the misconception was overcome.
+
+Each op must include rationale and evidence_obs_ids (and card_id / target_card_id as needed).
+
+Do not invent observations. Use only provided obs ids.
+
+Output:
+{
+  "operations": [
+    {
+      "op": "update",
+      "card_id": "...",
+      "status": "learning",
+      "summary": "...",
+      "active_misconceptions": [{"text": "...", "evidence_obs_ids": ["..."]}],
+      "resolved_misconceptions": [{"text": "...", "evidence_obs_ids": ["..."]}],
+      "note": "",
+      "needs_review": false,
+      "rationale": "...",
+      "evidence_obs_ids": ["..."]
+    }
+  ]
+}
