@@ -1,0 +1,11 @@
+# Online memory SDK — runtime dependencies
+# Install: pip install -r docs/requirements.txt
+# Details: docs/ENVIRONMENT.md
+
+numpy>=1.24
+openai>=1.0
+torch>=2.0
+sentence-transformers>=2.2.0
+
+# Optional: tests
+# pytest>=8.0

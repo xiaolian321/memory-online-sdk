@@ -6,7 +6,7 @@
   "memory_mode": "layered",
   "kp_resolver": "open",
   "embedding_model_id": "BAAI/bge-large-zh-v1.5",
-  "embedding_model_dir": "",
+  "embedding_model_dir": "./models/bge-large-zh-v1.5",
   "embedding_device": "cuda:0",
   "embedding_use_fp16": true,
   "embedding_batch_size": 32,

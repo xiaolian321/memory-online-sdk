@@ -23,8 +23,9 @@ client.wait_pending()
 client.close()
 ```
 
-接口说明见 [docs/API.md](docs/API.md)。  
-**修改 LLM 调用方式**：见 [docs/API.md#llm-调用与替换](docs/API.md#llm-调用与替换)。
+- 接口：[docs/API.md](docs/API.md)  
+- 环境与依赖（含**同机共用本地 embedding 路径**）：[docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) · `pip install -r docs/requirements.txt`  
+- **修改 LLM 调用方式**：[docs/API.md#llm-调用与替换](docs/API.md#llm-调用与替换)
 
 ## 范围
 

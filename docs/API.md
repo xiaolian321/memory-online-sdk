@@ -130,13 +130,13 @@ client.close()
 | `embedding_device` | 如 `cuda:0` |
 | `store_dir` | 默认 store 根目录 |
 
-环境变量：
+环境变量与安装（含 **embedding 使用项目目录 / 同服务器已有模型路径**）见 **[ENVIRONMENT.md](./ENVIRONMENT.md)**；pip 依赖见 **[requirements.txt](./requirements.txt)**。
 
 | 变量 | 用途 |
 |------|------|
 | `DEEPSEEK_API_KEY` / `OPENAI_API_KEY` | 后台抽取 LLM |
 | `MEMORY_ONLINE_LLM_BASE_URL` | OpenAI 兼容 base URL |
-| `MEMORY_ONLINE_EMBEDDING_DIR` | 本地 embedding 模型目录 |
+| `MEMORY_ONLINE_EMBEDDING_DIR` | 本地 embedding 模型目录（可与 `embedding_model_dir` 二选一） |
 | `MEMORY_ONLINE_ENV_FILE` | 可选 key 文件路径 |
 | `MEMORY_ONLINE_LLM_CACHE` | LLM 磁盘缓存目录 |
 
